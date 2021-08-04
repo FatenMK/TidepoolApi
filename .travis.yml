@@ -5,10 +5,11 @@ node_js:
   - 16
 jobs:
   include:
-    - stage: List pending TODOs
+    - stage: Validate
+      name: List pending TODOs
       script:
         - egrep -R -i TODO *
-    - stage: Validate
+    - name: Validate Markdown documentation
       install:
         - npm install -g markdownlint-cli
         - markdownlint --version
@@ -17,38 +18,42 @@ jobs:
     - install:
         - npm install -g @apidevtools/swagger-cli
         - npm install -g @stoplight/spectral
-        - npm install -g @openapitools/openapi-generator-cli
+        - npm install -g @openapitools/openapi-generator-cli@5.2.0
         - swagger-cli --version
         - spectral --version
         - openapi-generator --version
       script:
         - rake validate:specs:all
     - stage: Generate
+      name: Generate documentation
       install:
         - npm install -g @apidevtools/swagger-cli
-        - npm install -g @openapitools/openapi-generator-cli
+        - npm install -g @openapitools/openapi-generator-cli@5.2.0
         - swagger-cli --version
         - openapi-generator --version
       script:
         - rake generate:docs:all
-    - install:
+    - name: Generate client SDKs
+      install:
         - npm install -g @apidevtools/swagger-cli
-        - npm install -g @openapitools/openapi-generator-cli
+        - npm install -g @openapitools/openapi-generator-cli@5.2.0
         - swagger-cli --version
         - openapi-generator --version
       script:
         - rake generate:client:all
-    - install:
+    - name: Generate server stubs
+      install:
         - npm install -g @apidevtools/swagger-cli
-        - npm install -g @openapitools/openapi-generator-cli
+        - npm install -g @openapitools/openapi-generator-cli@5.2.0
         - swagger-cli --version
         - openapi-generator --version
       script:
         - rake generate:server:all
-    - install:
+    - name: Generate Postman collections
+      install:
         - npm install -g @apidevtools/swagger-cli
         - npm install -g openapi-to-postmanv2
         - swagger-cli --version
-        - openapi-generator --version
+        - openapi2postmanv2 --version
       script:
         - rake generate:server:all
