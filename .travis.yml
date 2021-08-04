@@ -21,7 +21,7 @@ jobs:
         - npm install -g @openapitools/openapi-generator-cli
         - swagger-cli --version
         - spectral --version
-        - openapi-generator --version
+        - openapi-generator-cli version
       script:
         - rake validate:specs:all
     - stage: Generate
@@ -30,7 +30,7 @@ jobs:
         - npm install -g @apidevtools/swagger-cli
         - npm install -g @openapitools/openapi-generator-cli
         - swagger-cli --version
-        - openapi-generator --version
+        - openapi-generator-cli version
       script:
         - rake generate:docs:all
     - name: Generate client SDKs
@@ -38,7 +38,7 @@ jobs:
         - npm install -g @apidevtools/swagger-cli
         - npm install -g @openapitools/openapi-generator-cli
         - swagger-cli --version
-        - openapi-generator --version
+        - openapi-generator-cli version
       script:
         - rake generate:client:all
     - name: Generate server stubs
@@ -46,7 +46,7 @@ jobs:
         - npm install -g @apidevtools/swagger-cli
         - npm install -g @openapitools/openapi-generator-cli
         - swagger-cli --version
-        - openapi-generator --version
+        - openapi-generator-cli version
       script:
         - rake generate:server:all
     - name: Generate Postman collections

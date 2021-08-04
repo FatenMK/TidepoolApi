@@ -70,7 +70,7 @@ namespace :validate do
 
             desc "validate specs with OpenAPI Generator"
             task :openapi_generator => [ bundled(spec) ] do
-                sh "openapi-generator validate --input-spec #{bundled(spec)}"
+                sh "openapi-generator-cli validate --input-spec #{bundled(spec)}"
             end
         end
 
@@ -113,7 +113,7 @@ namespace :generate do
 
                     desc "generate #{package} in #{format} using generator '#{generator}'"
                     task format => [ bundled(spec), output ] do
-                        sh "openapi-generator generate --input-spec #{bundled(spec)} --generator-name #{generator} --output #{output} > #{File.join(output, 'generator.log')}"
+                        sh "openapi-generator-cli generate --input-spec #{bundled(spec)} --generator-name #{generator} --output #{output} > #{File.join(output, 'generator.log')}"
                     end
 
                     desc "generate #{package} for all formats: #{formats.keys.map { |l| l.to_s }.join(', ')}"
