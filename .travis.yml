@@ -3,6 +3,17 @@ git:
 language: node_js
 node_js:
   - 16
+install:
+  - npm install -g markdownlint-cli
+  - markdownlint --version
+  - npm install -g @apidevtools/swagger-cli
+  - swagger-cli --version
+  - npm install -g @stoplight/spectral
+  - spectral --version
+  - npm install -g @openapitools/openapi-generator-cli
+  - openapi-generator-cli version
+  - npm install -g openapi-to-postmanv2
+  - openapi2postmanv2 --version
 jobs:
   include:
     - stage: Validate
@@ -10,51 +21,21 @@ jobs:
       script:
         - egrep -R -i TODO *
     - name: Validate Markdown documentation
-      install:
-        - npm install -g markdownlint-cli
-        - markdownlint --version
       script:
         - rake validate:docs:all
     - name: Validate OpenAPI v3 specifications
-      install:
-        - npm install -g @apidevtools/swagger-cli
-        - npm install -g @stoplight/spectral
-        - npm install -g @openapitools/openapi-generator-cli
-        - swagger-cli --version
-        - spectral --version
-        - openapi-generator-cli version
       script:
         - rake validate:specs:all
     - stage: Generate
       name: Generate documentation
-      install:
-        - npm install -g @apidevtools/swagger-cli
-        - npm install -g @openapitools/openapi-generator-cli
-        - swagger-cli --version
-        - openapi-generator-cli version
       script:
         - rake generate:docs:all
     - name: Generate client SDKs
-      install:
-        - npm install -g @apidevtools/swagger-cli
-        - npm install -g @openapitools/openapi-generator-cli
-        - swagger-cli --version
-        - openapi-generator-cli version
       script:
         - rake generate:client:all
     - name: Generate server stubs
-      install:
-        - npm install -g @apidevtools/swagger-cli
-        - npm install -g @openapitools/openapi-generator-cli
-        - swagger-cli --version
-        - openapi-generator-cli version
       script:
         - rake generate:server:all
     - name: Generate Postman collections
-      install:
-        - npm install -g @apidevtools/swagger-cli
-        - npm install -g openapi-to-postmanv2
-        - swagger-cli --version
-        - openapi2postmanv2 --version
       script:
         - rake generate:postman
