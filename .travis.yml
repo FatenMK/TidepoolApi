@@ -1,12 +1,12 @@
-language: ruby
+language: node_js
+node_js:
+  - 16
 jobs:
   include:
     - stage: List pending TODOs
       script:
         - egrep -R -i TODO *
     - stage: Validate the Markdown documentation
-      node_js:
-        - 16
       install:
         - npm install -g markdownlint-cli
       script:
