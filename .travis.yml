@@ -1,3 +1,5 @@
+git:
+  depth: 3
 language: node_js
 node_js:
   - 16
@@ -9,35 +11,46 @@ jobs:
     - stage: Validate the Markdown documentation
       install:
         - npm install -g markdownlint-cli
+        - markdownlint --version
       script:
         - rake validate:docs:all
     - stage: Validate the OpenAPI 3 specifications
       install:
         - npm install -g @apidevtools/swagger-cli
         - npm install -g @stoplight/spectral
+        - swagger-cli --version
+        - spectral --version
       script:
         - rake validate:specs:all
     - stage: Generate docs
       install:
         - npm install -g @apidevtools/swagger-cli
         - npm install -g @openapitools/openapi-generator-cli
+        - swagger-cli --version
+        - openapi-generator --version
       script:
         - rake generate:docs:all
     - stage: Generate client SDKs
       install:
         - npm install -g @apidevtools/swagger-cli
         - npm install -g @openapitools/openapi-generator-cli
+        - swagger-cli --version
+        - openapi-generator --version
       script:
         - rake generate:client:all
     - stage: Generate server stubs
       install:
         - npm install -g @apidevtools/swagger-cli
         - npm install -g @openapitools/openapi-generator-cli
+        - swagger-cli --version
+        - openapi-generator --version
       script:
         - rake generate:server:all
     - stage: Generate Postman collections
       install:
         - npm install -g @apidevtools/swagger-cli
         - npm install -g openapi-to-postmanv2
+        - swagger-cli --version
+        - openapi-generator --version
       script:
         - rake generate:server:all
