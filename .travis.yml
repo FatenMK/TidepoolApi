@@ -1,18 +1,41 @@
-language: node_js
-node_js:
-- '16.5'
+language: ruby
 jobs:
   include:
     - stage: List pending TODOs
       script:
         - egrep -R -i TODO *
-    - stage: Lint the Markdown documentation
+    - stage: Validate the Markdown documentation
       install:
         - npm install -g markdownlint-cli
       script:
-        - tools/lint_markdown.sh
-    - stage: Lint the OpenAPI 3 specifications
+        - rake validate:docs:all
+    - stage: Validate the OpenAPI 3 specifications
       install:
+        - npm install -g @apidevtools/swagger-cli
         - npm install -g @stoplight/spectral
       script:
-        - tools/lint_openapi.sh
+        - rake validate:specs:all
+    - stage: Generate docs
+      install:
+        - npm install -g @apidevtools/swagger-cli
+        - npm install -g @openapitools/openapi-generator-cli
+      script:
+        - rake generate:docs:all
+    - stage: Generate client SDKs
+      install:
+        - npm install -g @apidevtools/swagger-cli
+        - npm install -g @openapitools/openapi-generator-cli
+      script:
+        - rake generate:client:all
+    - stage: Generate server stubs
+      install:
+        - npm install -g @apidevtools/swagger-cli
+        - npm install -g @openapitools/openapi-generator-cli
+      script:
+        - rake generate:server:all
+    - stage: Generate Postman collections
+      install:
+        - npm install -g @apidevtools/swagger-cli
+        - npm install -g openapi-to-postmanv2
+      script:
+        - rake generate:server:all
