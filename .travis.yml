@@ -5,6 +5,8 @@ jobs:
       script:
         - egrep -R -i TODO *
     - stage: Validate the Markdown documentation
+      node_js:
+        - 16
       install:
         - npm install -g markdownlint-cli
       script:
