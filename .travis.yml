@@ -8,21 +8,22 @@ jobs:
     - stage: List pending TODOs
       script:
         - egrep -R -i TODO *
-    - stage: Validate the Markdown documentation
+    - stage: Validate
       install:
         - npm install -g markdownlint-cli
         - markdownlint --version
       script:
         - rake validate:docs:all
-    - stage: Validate the OpenAPI 3 specifications
-      install:
+    - install:
         - npm install -g @apidevtools/swagger-cli
         - npm install -g @stoplight/spectral
+        - npm install -g @openapitools/openapi-generator-cli
         - swagger-cli --version
         - spectral --version
+        - openapi-generator --version
       script:
         - rake validate:specs:all
-    - stage: Generate docs
+    - stage: Generate
       install:
         - npm install -g @apidevtools/swagger-cli
         - npm install -g @openapitools/openapi-generator-cli
@@ -30,24 +31,21 @@ jobs:
         - openapi-generator --version
       script:
         - rake generate:docs:all
-    - stage: Generate client SDKs
-      install:
+    - install:
         - npm install -g @apidevtools/swagger-cli
         - npm install -g @openapitools/openapi-generator-cli
         - swagger-cli --version
         - openapi-generator --version
       script:
         - rake generate:client:all
-    - stage: Generate server stubs
-      install:
+    - install:
         - npm install -g @apidevtools/swagger-cli
         - npm install -g @openapitools/openapi-generator-cli
         - swagger-cli --version
         - openapi-generator --version
       script:
         - rake generate:server:all
-    - stage: Generate Postman collections
-      install:
+    - install:
         - npm install -g @apidevtools/swagger-cli
         - npm install -g openapi-to-postmanv2
         - swagger-cli --version
