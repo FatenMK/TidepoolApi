@@ -15,7 +15,8 @@ jobs:
         - markdownlint --version
       script:
         - rake validate:docs:all
-    - install:
+    - name: Validate OpenAPI v3 specifications
+      install:
         - npm install -g @apidevtools/swagger-cli
         - npm install -g @stoplight/spectral
         - npm install -g @openapitools/openapi-generator-cli
@@ -56,4 +57,4 @@ jobs:
         - swagger-cli --version
         - openapi2postmanv2 --version
       script:
-        - rake generate:server:all
+        - rake generate:postman
