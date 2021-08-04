@@ -18,7 +18,7 @@ jobs:
     - install:
         - npm install -g @apidevtools/swagger-cli
         - npm install -g @stoplight/spectral
-        - npm install -g @openapitools/openapi-generator-cli@5.2.0
+        - npm install -g @openapitools/openapi-generator-cli
         - swagger-cli --version
         - spectral --version
         - openapi-generator --version
@@ -28,7 +28,7 @@ jobs:
       name: Generate documentation
       install:
         - npm install -g @apidevtools/swagger-cli
-        - npm install -g @openapitools/openapi-generator-cli@5.2.0
+        - npm install -g @openapitools/openapi-generator-cli
         - swagger-cli --version
         - openapi-generator --version
       script:
@@ -36,7 +36,7 @@ jobs:
     - name: Generate client SDKs
       install:
         - npm install -g @apidevtools/swagger-cli
-        - npm install -g @openapitools/openapi-generator-cli@5.2.0
+        - npm install -g @openapitools/openapi-generator-cli
         - swagger-cli --version
         - openapi-generator --version
       script:
@@ -44,7 +44,7 @@ jobs:
     - name: Generate server stubs
       install:
         - npm install -g @apidevtools/swagger-cli
-        - npm install -g @openapitools/openapi-generator-cli@5.2.0
+        - npm install -g @openapitools/openapi-generator-cli
         - swagger-cli --version
         - openapi-generator --version
       script:
