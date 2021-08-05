@@ -53,7 +53,7 @@ namespace :validate do
         end
 
         desc "validate docs with all tools"
-        multitask :all => [ 'markdownlint' ]
+        task :all => [ 'markdownlint' ]
     end
 
     namespace :specs do
@@ -117,7 +117,7 @@ namespace :generate do
                     end
 
                     desc "generate #{package} for all formats: #{formats.keys.map { |l| l.to_s }.join(', ')}"
-                    multitask :all => [ format ]
+                    task :all => [ format ]
                 end
             end
         end
