@@ -14,28 +14,6 @@ install:
   - openapi-generator-cli version
   - npm install -g openapi-to-postmanv2
   - openapi2postmanv2 --version
-jobs:
-  include:
-    - stage: Validate
-      name: List pending TODOs
-      script:
-        - egrep -R -i TODO *
-    - name: Validate Markdown documentation
-      script:
-        - rake validate:docs:all
-    - name: Validate OpenAPI v3 specifications
-      script:
-        - rake validate:specs:all
-    - stage: Generate
-      name: Generate documentation
-      script:
-        - rake generate:docs:all
-    - name: Generate client SDKs
-      script:
-        - rake generate:client:all
-    - name: Generate server stubs
-      script:
-        - rake generate:server:all
-    - name: Generate Postman collections
-      script:
-        - rake generate:postman
+script:
+  - egrep -R -i TODO *
+  - rake all
