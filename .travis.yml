@@ -4,16 +4,8 @@ language: node_js
 node_js:
   - 16
 install:
-  - npm install -g markdownlint-cli
-  - markdownlint --version
-  - npm install -g @apidevtools/swagger-cli
-  - swagger-cli --version
-  - npm install -g @stoplight/spectral
-  - spectral --version
-  - npm install -g @openapitools/openapi-generator-cli
-  - openapi-generator-cli version
-  - npm install -g openapi-to-postmanv2
-  - openapi2postmanv2 --version
+  - rake install
 script:
-  - egrep -R -i TODO *
+  - rake selftest
+  - rake pending
   - rake all
