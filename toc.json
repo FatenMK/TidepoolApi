@@ -368,6 +368,16 @@
             },
             {
               "type": "item",
+              "title": "Create an Assertion Challenge",
+              "uri": "reference/auth.v1.yaml#CreateAssertionChallenge"
+            },
+            {
+              "type": "item",
+              "title": "Create an Attestation Challenge",
+              "uri": "reference/auth.v1.yaml#CreateAttestationChallenge"
+            },
+            {
+              "type": "item",
               "title": "Create Custodial User",
               "uri": "reference/auth.v1.yaml#CreateCustodialUser"
             },
@@ -465,6 +475,16 @@
               "type": "item",
               "title": "Update User",
               "uri": "reference/auth.v1.yaml#UpdateUser"
+            },
+            {
+              "type": "item",
+              "title": "Verify an Assertion",
+              "uri": "reference/auth.v1.yaml#VerifyAssertion"
+            },
+            {
+              "type": "item",
+              "title": "Verify an Attestation",
+              "uri": "reference/auth.v1.yaml#VerifyAttestation"
             }
           ]
         },
@@ -472,6 +492,21 @@
           "type": "group",
           "title": "Models",
           "items": [
+            {
+              "type": "item",
+              "title": "App Challenge",
+              "uri": "reference/auth/models/appchallenge.v1.yaml"
+            },
+            {
+              "type": "item",
+              "title": "Assertion Verify",
+              "uri": "reference/auth/models/assertionverify.v1.yaml"
+            },
+            {
+              "type": "item",
+              "title": "Attestation Verify",
+              "uri": "reference/auth/models/attestationverify.v1.yaml"
+            },
             {
               "type": "item",
               "title": "Date Filter",
@@ -484,8 +519,18 @@
             },
             {
               "type": "item",
+              "title": "Key Id",
+              "uri": "reference/auth/models/keyid.v1.yaml"
+            },
+            {
+              "type": "item",
               "title": "New Custodial User",
               "uri": "reference/auth/models/newcustodialuser.v1.yaml"
+            },
+            {
+              "type": "item",
+              "title": "New App Challenge",
+              "uri": "reference/auth/models/newappchallenge.v1.yaml"
             },
             {
               "type": "item",
